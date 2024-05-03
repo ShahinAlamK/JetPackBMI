@@ -56,28 +56,26 @@ fun BottomCard(
             ){
                 Box(
                     modifier = Modifier
-                        .size(60.dp)
                         .padding(10.dp)
                         .background(GrayLight, shape = CircleShape)
                         .clickable { decrement() },
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
-                        modifier = Modifier.padding(15.dp),
+                        modifier = Modifier.size(40.dp).padding(15.dp),
                         painter = painterResource(id = R.drawable.minus), contentDescription ="" )
                 }
 
 
                 Box(
                     modifier = Modifier
-                        .size(60.dp)
                         .padding(10.dp)
                         .background(GrayLight, shape = CircleShape)
                         .clickable { increment() },
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
-                        modifier = Modifier.padding(15.dp),
+                        modifier = Modifier.size(40.dp).padding(15.dp),
                         painter = painterResource(id = R.drawable.plus), contentDescription ="" )
                 }
 

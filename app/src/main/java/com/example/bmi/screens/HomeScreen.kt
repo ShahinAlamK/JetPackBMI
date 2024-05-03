@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -80,7 +81,7 @@ fun HomeScreen(viewModel: BmiViewModel){
                 titleContentColor = GrayLight
             ),
             title = { Text(text = stringResource(id = R.string.app_name),
-                style = MaterialTheme.typography.bodyLarge)})
+                style = MaterialTheme.typography.titleMedium)})
         }
     ) {padding->
         Column(
@@ -92,15 +93,17 @@ fun HomeScreen(viewModel: BmiViewModel){
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            //Top Card UI
+
+            ////////////Top Card UI////////////////
             Row (
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.weight(1f).fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ){
+
                CustomCard(
                    modifier = Modifier
-                       .weight(0.5f)
-                       .fillMaxHeight(0.3f)
+                       .weight(1f)
+                       .fillMaxHeight()
                        .background(
                            color = getColor("male"),
                            shape = RoundedCornerShape(8.dp)
@@ -109,11 +112,13 @@ fun HomeScreen(viewModel: BmiViewModel){
                    icon = painterResource(id = R.drawable.male),
                    onClick = { viewModel.isGender="male"}
                )
+
                 Spacer(modifier = Modifier.width(20.dp))
+
                 CustomCard(
                     modifier = Modifier
-                        .weight(0.5f)
-                        .fillMaxHeight(0.3f)
+                        .weight(1f)
+                        .fillMaxHeight()
                         .background(
                             color = getColor("female"),
                             shape = RoundedCornerShape(8.dp)
@@ -124,9 +129,10 @@ fun HomeScreen(viewModel: BmiViewModel){
                 )
             }
 
-            //Slider Box
+            /////////Slider Box//////////////////
             Box(
                 modifier = Modifier
+                    .weight(0.7f)
                     .fillMaxWidth()
                     .padding(top = 10.dp)
                     .background(
@@ -163,16 +169,19 @@ fun HomeScreen(viewModel: BmiViewModel){
                 }
             }
 
-            //Bottom Bar Box
+
+            /////////Bottom Bar Box//////////////
             Row (
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
             ){
 
               BottomCard(
                   modifier = Modifier
-                      .weight(0.5f)
-                      .fillMaxHeight(0.7f)
+                      .weight(1f)
+                      .fillMaxHeight()
                       .padding(top = 10.dp)
                       .background(
                           color = BlueLight,
@@ -195,8 +204,8 @@ fun HomeScreen(viewModel: BmiViewModel){
 
                 BottomCard(
                     modifier = Modifier
-                        .weight(0.5f)
-                        .fillMaxHeight(0.7f)
+                        .weight(1f)
+                        .fillMaxHeight()
                         .padding(top = 10.dp)
                         .background(
                             color = BlueLight,
@@ -217,12 +226,12 @@ fun HomeScreen(viewModel: BmiViewModel){
 
             }
 
-            Spacer(modifier = Modifier.height(10.dp))
-
-           Button(
+            Spacer(modifier = Modifier.height(20.dp))
+            ///////////////////Calculate////////////////
+            Button(
                modifier = Modifier
                    .fillMaxWidth()
-                   .height(50.dp)
+                   .height(55.dp)
                    .clip(shape = RoundedCornerShape(5.dp),)
                    .background(BlueLight),
                colors = ButtonDefaults.buttonColors(containerColor = Pink),
@@ -237,7 +246,7 @@ fun HomeScreen(viewModel: BmiViewModel){
                }) {
                Text(
                    text = stringResource(id = R.string.calculate).uppercase(),
-                   style = MaterialTheme.typography.bodyLarge.copy(
+                   style = MaterialTheme.typography.titleMedium.copy(
                        if (isEnable) GrayLight else  Color.Gray
                    ))
            }
